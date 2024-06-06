@@ -1,14 +1,14 @@
 # Maintainer: Sasha Gerrand <alpine-pkgs@sgerrand.com>
 
 pkgname="glibc"
-pkgver="2.35"
+pkgver="2.39"
 _pkgrel="0"
 pkgrel="1"
 pkgdesc="GNU C Library compatibility layer"
 arch="x86_64"
-url="https://github.com/sgerrand/alpine-pkg-glibc"
+url="https://github.com/opagolu-ebay/alpine-pkg-glibc"
 license="LGPL"
-source="https://github.com/sgerrand/docker-glibc-builder/releases/download/$pkgver-$_pkgrel/glibc-bin-$pkgver-$_pkgrel-x86_64.tar.gz
+source="https://github.com/opagolu-ebay/docker-glibc-builder/releases/download/$pkgver-$_pkgrel/glibc-bin-$pkgver.tar.gz
 ld.so.conf"
 subpackages="$pkgname-bin $pkgname-dev $pkgname-i18n"
 triggers="$pkgname-bin.trigger=/lib:/usr/lib:/usr/glibc-compat/lib"
@@ -45,6 +45,6 @@ i18n() {
 }
 
 sha512sums="
-0aff0ec76f4d341957a792b8635c0770148eba9a5cb64f9bbd85228c14d9cb93c1a402063cab533a9f536f5f7be92c27bc5be8ed13c2b4f7aa416510c754d071  glibc-bin-2.35-0-x86_64.tar.gz
+25bafc627d0d1a49de306bf359f2bf1f9534ceb94e578da5df6a01f4c543cf144807638053e7730a1748ac42ad91b8b584c97ec0254b579f3b709da7b0cae668  glibc-bin-2.39.tar.gz
 2912f254f8eceed1f384a1035ad0f42f5506c609ec08c361e2c0093506724a6114732db1c67171c8561f25893c0dd5c0c1d62e8a726712216d9b45973585c9f7  ld.so.conf
 "
