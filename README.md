@@ -24,9 +24,19 @@ Any previous reference to `https://raw.githubusercontent.com/sgerrand/alpine-pkg
 
 ## Locales
 
-You will need to generate your locale if you would like to use a specific one for your glibc application. You can do this by installing the `glibc-i18n` package and generating a locale using the `localedef` binary. An example for en_US.UTF-8 would be:
+You will need to generate your locale if you would like to use a specific one for your glibc application. You can do this by installing the `glibc-i18n`
+package and generating a locale using the `localedef` binary. An example for en_US.UTF-8 would be:
 
     wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.35-r1/glibc-bin-2.35-r1.apk
     wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.35-r1/glibc-i18n-2.35-r1.apk
     apk add glibc-bin-2.35-r1.apk glibc-i18n-2.35-r1.apk
     /usr/glibc-compat/bin/localedef -i en_US -f UTF-8 en_US.UTF-8
+
+## musl - current state
+https://wiki.musl-libc.org/open-issues
+Locale limitations
+Locale support is very limited, and barely works. Translation of LC_TIME is not possible because the key strings for ABMON_5 and MON_5 (“May”) are identical. Custom collation orders (LC_COLLATE) are not implemented at all, despite there always having been an intent to support them. LC_NUMERIC and LC_MONETARY also admit no variation by locale. Solving these problems requires a major overhaul, but the main missing prerequisite is involvement from users who want the functionality.
+
+Building officially recognized locales for musl is also a recognized open problem. The bulk of the data should be derived mechanically from the Unicode CLDR where possible, but the CLDR seems to lack certain time format variants corresponding to the ones C/POSIX needs for nl_langinfo/strftime. This probably requires a great deal of manual work to remedy, ideally getting the missing formats added upstream with Unicode.
+
+    
